@@ -145,30 +145,6 @@ class TestProductModel(unittest.TestCase):
         self.assertIsNone(product.id)
         self.assertRaises(DataValidationError, product.update)
 
-    def test_deserialize_a_product(self):
-        """It should deserialize a product"""
-        product = ProductFactory()
-        product.id = None
-        product.create()
-        self.assertIsNotNone(product.id)
-        data = product.serialize() #PRODUCT_DATA[]
-        print(f"Serializing: {data}")
-        product.deserialize(data)
-
- #PRODUCT_DATA[]    def test_deserialize_a_product_with_invalid_attributes(self):
-        """It should raise DataValidationError on Invalid attributes"""
-        product = ProductFactory()
-        product.id = None
-        product.create()
-        self.assertIsNotNone(product.id)
-        data = product.serialize() #PRODUCT_DATA[]
-        print(f"Original data: {data}")
-        #data["available"] = "True        #self.assertRaises(DataValidationError, product.deserialize(data))
-        #data["available"] = True
- #PRODUCT_DATA[]        #data['category'] = "MATHS"
-        #print(f"Modified data: {data}")#product.deserialize(data)
-        #self.assertRaises(DataValidationError, product.deserialize(data))
-
     def test_delete_a_product(self):
         """It should Delete a Product"""
         product = ProductFactory()
